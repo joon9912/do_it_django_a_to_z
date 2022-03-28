@@ -1,14 +1,19 @@
 {% extends 'blog/base.html' %}
-
 {% block head_title %}
     {{ post.title }} - Blog
 {% endblock %}
-
 {% block main_area %}
+
     <div id="post-area">
-                    <!-- Post content-->
-                    <article>
-                        <!-- Post header-->
+        {% if post.category %}
+            <span class="badge badge-secondary float-right">{{ post.category }}</span>
+        {% else %}
+            <span class="badge badge-secondary float-right">미분류</span>
+        {% endif %}
+
+        <!-- Post content-->
+        <article>
+            <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
@@ -50,9 +55,9 @@
                                 </a>
                             {% endif %}
                         </section>
-                    </article>
+        </article>
         <hr>
-        </div>
+    </div>
 
         <div id="comment-area">
                     <!-- Comments section-->
