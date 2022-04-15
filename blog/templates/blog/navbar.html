@@ -23,6 +23,12 @@
              <ul class="navbar-nav ml-auto">
                  {% if user.is_authenticated %}
                      <a class="nav-item dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="flase">
+                         {% if user.socialaccount_set.all.0.get_avatar_url %}
+                            <img class="rounded-circle" width="25px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
+                         {% else %}
+                             <img class="rounded-circle" src="http://via.placeholder.com/50x50" alt="">
+                         {% endif %}
+                         &nbsp;
                          {{ user.username }}
                      </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
