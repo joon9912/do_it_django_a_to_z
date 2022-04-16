@@ -26,7 +26,6 @@ class Category(models.Model):
     def get_absolute_url(self):
         return f'/blog/category/{self.slug}/'
 
-
     class Meta:
         verbose_name_plural = 'Categories'
 
@@ -62,6 +61,12 @@ class Post(models.Model):
 
     def get_content_markdown(self):
         return markdown(self.content)
+
+    def get_avatar_url(self):
+        if self.author.socialaccount_set.exists():
+            return self.author.socialaccount_set.first().get_avatar_url()
+        else:
+            return f'http://via.placeholder.com/50x50'
 
 
 class Comment(models.Model):
