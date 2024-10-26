@@ -22,6 +22,7 @@
 
              <ul class="navbar-nav ml-auto">
                  {% if user.is_authenticated %}
+                 <li class="nav-item dropdown">
                      <a class="nav-item dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="flase">
                          {% if user.socialaccount_set.all.0.get_avatar_url %}
                             <img class="rounded-circle" width="25px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
@@ -34,6 +35,7 @@
                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                          <a class="dropdown-item" href="/accounts/logout/">Log Out</a>
                      </div>
+                 </li>
                  {% else %}
                      <li class="nav-item">
                          <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
